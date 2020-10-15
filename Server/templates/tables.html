@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+   <html>
+      <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{url_for('static',filename='css/stylish-portfolio.css')}}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{url_for('static',filename='font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <link href="{{url_for('static',filename='background.css')}}" rel="stylesheet">
+ 
+    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	
+    <title> my seat </title>
+    <style Type = "text/css">
+        .seat{width: 60px; height::10px;
+            background-color: #B2EBF4;
+            color: black; 
+            font-size: 0.84em;
+            font-weight:bold;
+            border-radius: 4px;
+            padding: 1%;
+            text-align:center;
+            border: 3.2px groove #8EC7D0
+            }
+        .table{
+            width:1200px; 
+            height:700px; 
+            background-color:#2D2D2D; 
+            position:relative;
+            text-align: center; 
+            border: 9px ridge #121212;
+            vertical-align: center;
+            align-self: center;
+            align-items: center;
+			margin-top: 80px;
+            margin-left: 70px;}
+		.mg{margin-left: 70px;}
+        .txt{font-size: 60pt; text-align: center; color: #48CAE1;}    
+		.ct{text-align: center; color: #48CAE1;}
+		.btn-box {
+		    font-weight: bold;
+			border-radius: 0;
+			color: #48CAE1;
+			border-color : rgba(0,0,0,0.4);
+			background-color: rgba(0,0,0,0.4);
+			font-size: 20pt;
+			text-align: center;
+			}
+		.btn-blue {
+			font-weight: bold;
+			border-radius: 0;
+			color: #003740;
+			background-color: #B2EBF4;
+			border: 3.2px groove #8EC7D0;
+			border-radius: 4px;
+			margin-bottom: 10px;
+			}
+		.btn-blueadd {
+			font-weight: bold;
+			border-radius: 0;
+			color: #000F1E;
+			background-color: #7CB5BE;
+			border: 3.2px groove #8EC7D0;
+			border-radius: 4px;
+			margin-top: 5px;
+			}
+		.btn-no {
+			font-weight: bold;
+			border-radius: 0;
+			color: rgba(0,0,0,0);
+			background-color: rgba(0,0,0,0);
+			}
+		.pos{position: absolute; top:180px;}
+        .pos1{position: absolute; top:180px; margin-left: 90px;}
+        .pos2{position: absolute; top:185px; margin-left: 310px;}
+        .pos3{position: absolute; top:180px; margin-left: 1090px;}
+        .pos4{position: absolute; top:185px; margin-left: 513px;}
+        .pos5{position: absolute; top:180px; margin-left: 180px;}
+		.pos6{position: absolute; top:143px; 
+            margin-left: 1090px;
+            font-weight: bold;
+            font-size: 13pt;
+            color: #48CAE1;
+            background-color: rgba(0,0,0,0);
+            border-radius: 0;
+            border-color: rgba(0,0,0,0.4);
+            }
+		.c0{background-color: #B2EBF4; font-weight: bold;}
+        .c1{background-color: #E8FFFF; font-weight: bold;}
+        .c2{background-color: #4374D9; font-weight: bold;}
+        .c3{background-color: #2924BD; font-weight: bold;}
+		   .btn-blue1 {
+			font-weight: bold;
+			border-radius: 0;
+			color: #000025;
+			background-color: #4374D9;
+			border: 3.2px groove #1F50B5;
+			border-radius: 4px;
+			margin-bottom: 10px;
+		    }
+        .drop{background-color: rgba(0,0,0,0); 
+            border-radius: 0;
+            border-color: rgba(0,0,0,0);
+            font-size: 12pt;
+            font-weight: bold;
+            text-align: center;
+            }
+        .dropm{width:10px; background-color: #E8FFFF; text-align: center;}
+		  
+    </style>
+    <!-- jQuery -->
+    <script src="{{url_for('static',filename='js/jquery.js')}}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+    </head>
+
+    <body>
+
+        <br/>	
+				<div class="text-vertical-ct">
+					My SEAT 
+					<br/>
+				</div>
+				
+				<div class="ct">
+				<input id="box" type="submit" class="btn-box" value="" />
+				</div>
+				
+				<input id="name" type="submit" class="pos6" value="" />
+        <br/>
+    
+
+        <script type="text/javascript">
+      
+		//add a room
+        function add(x){
+            var str = '<i>좌석</i>'+'<br/><br/>'+'<i class="glyphicon glyphicon-trash" onclick="del(this)"></i>'+'&nbsp;&nbsp;'+'<i class="glyphicon glyphicon-search" onclick="edit(this)"></i>';
+            var newDiv=document.createElement('div'); 
+            newDiv.className = "seat";   
+            newDiv.innerHTML=str; 
+			parent = document.getElementById('table');
+			parent.appendChild(newDiv);
+			newDiv.style.backgroundColor = backcolor; 
+			newDiv.style.position = "absolute"; 
+			newDiv.style.top = "0";
+			newDiv.style.left = "0";    
+			}
+        
+		//delete a room
+        function del(obj){
+            parent = document.getElementById('table');
+            parent.removeChild(obj.parentNode);
+			}
+		
+		//edit info
+		function edit(obj){
+			var info = prompt('좌석정보를 입력하세요.', 'ex) R석 , A열4번');
+			obj.parentNode.firstChild.innerHTML = info;
+			}
+			
+		//change
+		function change(value){
+			
+			//change the seat arrangement
+			var str = '<i></i>'+'<br/><br/>'+'<i class="glyphicon glyphicon-trash" onclick="del(this)"></i>'+'&nbsp;&nbsp;'+'<i class="glyphicon glyphicon-search" onclick="edit(this)"></i>';
+			parent = document.getElementById('table');
+			var count={{count|safe}};
+			var seatx={{seatx|tojson|safe}};
+			var seaty={{seaty|tojson|safe}};
+			var floor={{floor|tojson|safe}};
+			var color={{color|tojson|safe}};
+			var table={{table|tojson|safe}};
+			var info={{info|tojson|safe}};
+		
+			while ( parent.childNodes[0] )
+			{parent.removeChild( parent.lastChild );}
+
+			for(var j=0;  j<count; j++){
+		
+				if(floor[j]==(value.replace('관',''))){
+					var newDiv=document.createElement('div'); 
+					newDiv.className = "seat";   
+					newDiv.innerHTML=str; 
+					newDiv.firstChild.innerHTML=info[j]; 
+					newDiv.style.position = "absolute";  
+					newDiv.style.top = seaty[j]+'px';
+					newDiv.style.left= seatx[j]+'px';	
+					newDiv.style.backgroundColor = color[j];
+					parent.appendChild(newDiv);
+					parent.lastChild.setAttribute('data-x','0');
+					parent.lastChild.setAttribute('data-y','0');
+					}
+			}
+		
+			//change 관 이름
+			var box=document.getElementById('box');
+			box.setAttribute('value',value);
+			
+			}
+
+			var ix = {{maxf}}; //global variable
+			
+		function addbox() {
+            if(ix>=10) {ix=9;}
+			ix++;
+			var box = document.getElementById("box"+ix);
+            box.setAttribute("class","btn btn-blue btn-lg");
+            box.setAttribute("readonly","false");
+            box.setAttribute("value",ix+"관");
+			}
+
+        function delbox() {
+			var box= document.getElementById("box"+ix);
+            box.setAttribute("class","btn btn-no btn-lg");
+            box.setAttribute("readonly","true");
+            box.setAttribute("value","");
+            ix--;         
+			}
+		  
+		var backcolor="";
+		function cr0() {
+			var cbox = document.getElementById("cbox");
+			cbox.setAttribute("class","btn btn-default c0");
+			backcolor = '#B2EBF4';
+			}
+
+		function cr1() {
+			var cbox = document.getElementById("cbox");
+			cbox.setAttribute("class","btn btn-default c1");
+			backcolor = '#E8FFFF';
+			}
+
+		function cr2() {
+			var cbox = document.getElementById("cbox");
+			cbox.setAttribute("class","btn btn-default c2");
+			backcolor = '#4374D9';
+			}
+	
+		function cr3() {
+			var cbox = document.getElementById("cbox");
+			cbox.setAttribute("class","btn btn-default c3");
+			backcolor = '#2924BD';
+			}
+		
+		function alldel(){
+			var parent = document.getElementById('table');
+			while ( parent.hasChildNodes() )
+			{parent.removeChild( parent.firstChild );}
+			}
+			
+	  	function ex1(){ 
+			alldel();
+			var parent = document.getElementById('table');
+			for(var yc=0; yc<5;yc++){
+				for(var xc=0; xc<13;xc++){
+
+            var str = '<i>좌석</i>'+'<br/><br/>'+'<i class="glyphicon glyphicon-trash" onclick="del(this)"></i>'+'&nbsp;&nbsp;'+'<i class="glyphicon glyphicon-search" onclick="edit(this)"></i>';
+
+             var newDiv=document.createElement('div'); // DIV °´Ã¼ »ý¼º
+             newDiv.className = "seat";   
+          
+             newDiv.innerHTML=str; // °´Ã¼¿¡ Æ÷ÇÔÇÒ ÅØ½ºÆ®
+         newDiv.style.backgroundColor = backcolor; 
+         newDiv.style.position = "absolute";  //////////  »õ·Î¿î ÁÂ¼® À§Ä¡
+         newDiv.style.top = 90*yc+111+'px';
+         newDiv.style.left = 60*xc+161+'px';
+      
+        parent.appendChild(newDiv);
+        parent.lastChild.setAttribute('data-x','0');
+      parent.lastChild.setAttribute('data-y','0');
+          }
+        }
+		}
+	   function ex2(){ 
+        alldel();
+        var parent = document.getElementById('table');
+        for(var yc=0; yc<6;yc++){
+          for(var xc=0; xc<14;xc++){
+
+            var str = '<i>좌석</i>'+'<br/><br/>'+'<i class="glyphicon glyphicon-trash" onclick="del(this)"></i>'+'&nbsp;&nbsp;'+'<i class="glyphicon glyphicon-search" onclick="edit(this)"></i>';
+
+             var newDiv=document.createElement('div'); // DIV °´Ã¼ »ý¼º
+             newDiv.className = "seat";   
+          
+             newDiv.innerHTML=str; // °´Ã¼¿¡ Æ÷ÇÔÇÒ ÅØ½ºÆ®
+         newDiv.style.backgroundColor = backcolor; 
+         newDiv.style.position = "absolute";  //////////  »õ·Î¿î ÁÂ¼® À§Ä¡
+         newDiv.style.top = 90*yc+51+'px';
+         if(xc<7)
+           newDiv.style.left = 60*xc+131+'px';
+         else
+          newDiv.style.left = 60*xc+191+'px';
+      
+        parent.appendChild(newDiv);
+        parent.lastChild.setAttribute('data-x','0');
+      parent.lastChild.setAttribute('data-y','0');
+          }
+        }
+		}
+	function ex3(x){ 
+        alldel();
+        var parent = document.getElementById('table');
+        for(var yc=0; yc<6;yc++){
+          for(var xc=0; xc<15;xc++){
+
+            var str = '<i>좌석</i>'+'<br/><br/>'+'<i class="glyphicon glyphicon-trash" onclick="del(this)"></i>'+'&nbsp;&nbsp;'+'<i class="glyphicon glyphicon-search" onclick="edit(this)"></i>';
+
+             var newDiv=document.createElement('div'); // DIV °´Ã¼ »ý¼º
+             newDiv.className = "seat";   
+          
+             newDiv.innerHTML=str; // °´Ã¼¿¡ Æ÷ÇÔÇÒ ÅØ½ºÆ®
+         newDiv.style.backgroundColor = backcolor; 
+         newDiv.style.position = "absolute";  //////////  »õ·Î¿î ÁÂ¼® À§Ä¡
+         newDiv.style.top = 90*yc+51+'px';
+         if(xc<4)
+           newDiv.style.left = 60*xc+71+'px';
+         else if(xc<11)
+          newDiv.style.left = 60*xc+131+'px';
+         else
+          newDiv.style.left = 60*xc+191+'px';
+      
+        parent.appendChild(newDiv);
+        parent.lastChild.setAttribute('data-x','0');
+      parent.lastChild.setAttribute('data-y','0');
+          }
+        }
+      }
+	   function ex4(x){ 
+        alldel();
+        var parent = document.getElementById('table');
+        for(var yc=0; yc<6;yc++){
+          for(var xc=0; xc<17;xc++){
+
+          if(((xc<3)&&(yc==0))||((xc<4)&&(yc==1))||((xc<5)&&(yc>1))){
+            var str = '<i>좌석</i>'+'<br/><br/>'+'<i class="glyphicon glyphicon-trash" onclick="del(this)"></i>'+'&nbsp;&nbsp;'+'<i class="glyphicon glyphicon-search" onclick="edit(this)"></i>';
+
+             var newDiv=document.createElement('div'); // DIV °´Ã¼ »ý¼º
+             newDiv.className = "seat";   
+          
+             newDiv.innerHTML=str; // °´Ã¼¿¡ Æ÷ÇÔÇÒ ÅØ½ºÆ®
+         newDiv.style.backgroundColor = backcolor; 
+         newDiv.style.position = "absolute";  //////////  »õ·Î¿î ÁÂ¼® À§Ä¡
+         newDiv.style.top = 90*yc+51+'px';
+            newDiv.style.left = 60*xc+71+'px';
+             parent.appendChild(newDiv);
+        parent.lastChild.setAttribute('data-x','0');
+      parent.lastChild.setAttribute('data-y','0');
+          }
+          else if(((xc>13)&&(yc==0))||((xc>12)&&(yc==1))||((xc>11)&&(yc>1))){
+            var str = '<i>좌석</i>'+'<br/><br/>'+'<i class="glyphicon glyphicon-trash" onclick="del(this)"></i>'+'&nbsp;&nbsp;'+'<i class="glyphicon glyphicon-search" onclick="edit(this)"></i>';
+
+             var newDiv=document.createElement('div'); // DIV °´Ã¼ »ý¼º
+             newDiv.className = "seat";   
+          
+             newDiv.innerHTML=str; // °´Ã¼¿¡ Æ÷ÇÔÇÒ ÅØ½ºÆ®
+         newDiv.style.backgroundColor = backcolor; 
+         newDiv.style.position = "absolute";  //////////  »õ·Î¿î ÁÂ¼® À§Ä¡
+         newDiv.style.top = 90*yc+51+'px';
+            newDiv.style.left = 60*xc+131+'px';
+             parent.appendChild(newDiv);
+        parent.lastChild.setAttribute('data-x','0');
+      parent.lastChild.setAttribute('data-y','0');
+          }
+          else if((4<xc<12)&&(yc>1)){
+            var str = '<i>좌석</i>'+'<br/><br/>'+'<i class="glyphicon glyphicon-trash" onclick="del(this)"></i>'+'&nbsp;&nbsp;'+'<i class="glyphicon glyphicon-search" onclick="edit(this)"></i>';
+
+             var newDiv=document.createElement('div'); // DIV °´Ã¼ »ý¼º
+             newDiv.className = "seat";   
+          
+             newDiv.innerHTML=str; // °´Ã¼¿¡ Æ÷ÇÔÇÒ ÅØ½ºÆ®
+         newDiv.style.backgroundColor = backcolor; 
+         newDiv.style.position = "absolute";  //////////  »õ·Î¿î ÁÂ¼® À§Ä¡
+         newDiv.style.top = 90*yc+51+'px';
+            newDiv.style.left = 60*xc+101+'px';
+             parent.appendChild(newDiv);
+        parent.lastChild.setAttribute('data-x','0');
+      parent.lastChild.setAttribute('data-y','0');
+          }
+         else ;
+       }
+     }
+   }
+
+   function ex5(){
+    
+    change(document.getElementById('box').value);
+   }      
+         </script>
+
+<div class="mg">
+<div class="pos">
+<input type="button" value="추가" class="btn btn-blue btn-lg" onclick="add()">
+&nbsp;&nbsp;&nbsp;
+</div>
+<div class="pos1">
+
+<form id="form_save" action="{{url_for('seat')}}" method=POST>
+<button type="submit" value="Refresh" class="btn btn-blue btn-lg" onclick="history.go(0)" id="savebtn">저장</button>
+</form>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+
+<div class="pos5">
+<input type="button" value="초기화" class="btn btn-blue btn-lg" onclick="alldel()">
+</div>
+
+<div class="pos2">
+<div class="btn-group btn-blue c0" role="group" aria-label="...">
+  <button id="cbox" type="button" class="btn btn-default c0">Color</button>
+</div>
+
+<div class="btn-group btn-blue" role="group" aria-label="...">
+  <button id="c0" type="button" class="btn btn-default c0" onClick="cr0()">&nbsp;</button>
+  <button id="c1" type="button" class="btn btn-default c1" onClick="cr1()">&nbsp;</button>
+  <button id="c2" type="button" class="btn btn-default c2" onClick="cr2()">&nbsp;</button>
+  <button id="c3" type="button" class="btn btn-default c3" onClick="cr3()">&nbsp;</button>
+</div>
+
+</div>
+
+<!-- Example Drop Down!!!! Single button -->
+<div class="pos4">
+<div class="btn-group">
+  <button type="button" class="btn btn-default btn-blue dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Example <span class="caret"></span>
+  </button>
+  <ul class="dropm dropdown-menu">
+    <li><button href="#" type="button" class="drop" onclick="ex1()">1 block</button></li>
+    <li role="separator" class="divider"></li>
+    <li><button href="#" type="button" class="drop" onclick="ex2()">2 block</button></li>
+    <li role="separator" class="divider"></li>
+    <li><button href="#" type="button" class="drop" onclick="ex3()">3 block</button></li>
+    <li role="separator" class="divider"></li>
+    <li><button href="#" type="button" class="drop" onclick="ex4()">Concert Hall</button></li>
+    <li role="separator" class="divider"></li>
+    <li><button href="#" type="button" class="drop" onclick="ex5()">원래대로</button></li>
+
+  </ul>
+</div></div>
+<!-- Example Drop Down!!!! END-->
+
+
+<div class="pos3">
+
+<form id="logout" action="{{url_for('index')}}" method=POST>
+<button type="submit" class="btn btn-blue1 btn-lg" id="logout">Log-Out</button>
+</form>
+
+</div>
+
+</div>
+
+
+
+<div class ="table" id="table"></div>
+
+<div class="mg">
+ <input id="box1" type="submit" readonly="true" class="btn btn-no btn-lg" value="" onClick="change(value);"/>&nbsp;
+ <input id="box2" type="submit" readonly="true" class="btn btn-no btn-lg" value="" onClick="change(value);"/>&nbsp;
+ <input id="box3" type="submit" readonly="true" class="btn btn-no btn-lg" value="" onClick="change(value);"/>&nbsp;
+ <input id="box4" type="submit" readonly="true" class="btn btn-no btn-lg" value="" onClick="change(value);"/>&nbsp;
+ <input id="box5" type="submit" readonly="true" class="btn btn-no btn-lg" value="" onClick="change(value);"/>&nbsp;
+ <input id="box6" type="submit" readonly="true" class="btn btn-no btn-lg" value="" onClick="change(value);"/>&nbsp;
+ <input id="box7" type="submit" readonly="true" class="btn btn-no btn-lg" value="" onClick="change(value);"/>&nbsp;
+ <input id="box8" type="submit" readonly="true" class="btn btn-no btn-lg" value="" onClick="change(value);"/>&nbsp;
+ <input id="box9" type="submit" readonly="true" class="btn btn-no btn-lg" value="" onClick="change(value);"/>&nbsp;
+ <input id="box10" type="submit" readonly="true" class="btn btn-no btn-lg" value="" onClick="change(value);"/>&nbsp; <br/>
+ </div>
+ <div class="mg">
+ 
+
+ 
+ <input type="button" class="btn btn-blueadd btn-lg" value="상영관 추가" onclick="addbox()">&nbsp;&nbsp;
+ <input type="button" class="btn btn-blueadd btn-lg" value="상영관 삭제" onclick="delbox()">
+ 
+ 
+ 
+ </div>
+ 
+ 
+ <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+      <script src="{{url_for('static',filename='interact.js')}}"></script>
+      <script src="{{url_for('static',filename='interact.min.js')}}"></script>
+      <script>   
+      var x = 0, y = 0;
+
+      interact('.seat')
+        .draggable({
+          snap: {
+            targets: [
+              interact.createSnapGrid({ x: 30, y: 30 })
+            ],
+            range: Infinity,
+            relativePoints: [ { x: 0, y: 0 } ]
+          },
+          inertia: true,
+          restrict: {
+            restriction:  document.getElementById('table'),
+            elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
+            endOnly: true
+          }
+        })
+        .on('dragmove', function (event) {
+           var target = event.target,
+        
+              x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+              y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+   
+          target.style.webkitTransform =
+          target.style.transform =
+            'translate(' + x + 'px, ' + y + 'px)';
+
+   
+          target.setAttribute('data-x', x);
+          target.setAttribute('data-y', y);
+              });   
+      </script>
+	  
+	     <script type="text/javascript">
+   $('.dropdown-toggle').dropdown()
+   $('#form_save').submit(function(event){
+      event.preventDefault();
+      var table = document.getElementById('table');
+      var children = table.childNodes;
+	 
+	  var floor = document.getElementById('box').value.replace('관','');
+	  var seatx = [];
+	  var seaty = [];
+	  var info = [];
+	  var style = [];
+	  var color = [];
+	  var numx=[];
+	  var maxf=ix;
+	  for(var i=0;  i<children.length; i++){ 
+		
+		seatx[i] = parseInt(children[i].style.left,10)+parseInt(children[i].getAttribute('data-x'),10);
+		seaty[i] = parseInt(children[i].style.top,10)+parseInt(children[i].getAttribute('data-y'),10);
+		info[i] =children[i].firstChild.innerHTML;
+		style = window.getComputedStyle(children[i],null);
+		color[i] = style.backgroundColor;
+		numx[i]=i+1;
+		}
+	  $.post('/seat',{id:'{{id}}',floor:floor,"info[]":info,"numx[]":numx,"seatx[]":seatx,"seaty[]":seaty,"color[]":color,maxf:maxf}).done(function(data){});
+	  
+      alert('저장되었습니다.');
+      
+   });
+      
+	var floornum =1;
+		
+    (function showUp(){
+		
+		// call values from database
+		
+		var str = '<i></i>'+'<br/><br/>'+'<i class="glyphicon glyphicon-trash" onclick="del(this)"></i>'+'&nbsp;&nbsp;'+'<i class="glyphicon glyphicon-search" onclick="edit(this)"></i>';
+		parent = document.getElementById('table');
+		var count={{count|safe}};
+		var seatx={{seatx|tojson|safe}};
+		var seaty={{seaty|tojson|safe}};
+		var floor={{floor|tojson|safe}};
+		var color={{color|tojson|safe}};
+		var table={{table|tojson|safe}};
+		var info={{info|tojson|safe}};
+		
+		// set the last revised room number
+		if(floor[count-1])
+			floornum=floor[count-1];
+		if(floor[count-1]>ix)
+			floornum=ix;
+			
+		var box=document.getElementById('box');
+		box.setAttribute('value',floornum+"관");
+	
+		// set the seats of revised room
+		for(var j=0;  j<count; j++){
+		
+		if(floor[j]==floornum){
+		var newDiv=document.createElement('div'); 
+		newDiv.className = "seat";   
+        newDiv.innerHTML=str; 
+        newDiv.firstChild.innerHTML=info[j]; 
+		newDiv.style.position = "absolute";  
+        newDiv.style.top = seaty[j]+'px';
+        newDiv.style.left= seatx[j]+'px';	
+		newDiv.style.backgroundColor = color[j];
+		parent.appendChild(newDiv);
+		parent.lastChild.setAttribute('data-x','0');
+		parent.lastChild.setAttribute('data-y','0');
+		}}
+		
+		
+		//Activate the room button
+		
+		var tmp={{maxf}};
+		for(var i=1;i<tmp+1;i++){
+		var num = document.getElementById("box"+i);
+        num.setAttribute("class","btn btn-blue btn-lg");
+        num.setAttribute("readonly","false");
+        num.setAttribute("value",i+"관");	
+		}
+		//Show 인사말
+		var name={{nickname|tojson|safe}}
+		var show=document.getElementById('name');
+		show.setAttribute('value', "환영합니다! "+name+"님"); 
+		})();
+   </script>
+
+      </body>
+</html>
