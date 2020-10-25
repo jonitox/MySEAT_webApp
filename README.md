@@ -24,7 +24,7 @@ Python3
    
 
 # UI Images   
-<img src="/ImageCuts/1.png" width="200px" height="350px" alt="1"></img>
-<img src="/ImageCuts/2.png" width="200px" height="350px" alt="2"></img>
-<img src="/ImageCuts/3.png" width="250px" height="200px" alt="3"></img>
-<img src="/ImageCuts/4.png" width="250px" height="200px" alt="4"></img>   
+<img src="/ImageCuts/1.png" width="300px" height="500px" alt="1"></img>
+<img src="/ImageCuts/2.png" width="300px" height="500px" alt="2"></img>
+<img src="/ImageCuts/3.png" width="500px" height="350px" alt="3"></img>
+<img src="/ImageCuts/4.png" width="200px" height="150px" alt="4"></img>   
